@@ -1,5 +1,6 @@
 package com.example.vpab_reservation_system.Controller;
 
+import com.example.vpab_reservation_system.config.LogoutService;
 import com.example.vpab_reservation_system.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import java.io.IOException;
 public class AuthController {
 
     private final AuthService authService;
+    private final LogoutService logoutService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
@@ -55,5 +57,16 @@ public class AuthController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @PostMapping
+    public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
+
+       try {
+           logoutService.logout(request, response, null);  // Pass null for authentication since it's not needed for logout
+           return ResponseEntity.ok("Logout successful");
+       }catch(RuntimeException e){
+           return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+       }
     }
 }
