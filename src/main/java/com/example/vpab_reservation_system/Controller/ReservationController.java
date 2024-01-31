@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController("reservationRestController")
 @RequestMapping("/api/v1/reservation")
@@ -87,8 +88,15 @@ public class ReservationController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public ResponseEntity<Void> deleteReservation(@PathVariable Long id) {
-        reservationService.deleteReservation(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Optional<Reservation> reservation = reservationService.findReservationById(id);
+
+        if(reservation.isPresent()){
+            reservationService.deleteReservation(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT
+            );
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
 
