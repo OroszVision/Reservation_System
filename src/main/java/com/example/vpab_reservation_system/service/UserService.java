@@ -3,6 +3,7 @@ package com.example.vpab_reservation_system.service;
 import com.example.vpab_reservation_system.model.Role;
 import com.example.vpab_reservation_system.model.User;
 import com.example.vpab_reservation_system.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public void promoteToAdmin(Long id) {
+    public void promoteToAdmin(Long id) throws IllegalAccessException {
         if (isAdmin()) {
             Optional<User> userOptional = userRepository.findById(id);
 
@@ -27,15 +28,15 @@ public class UserService {
                 user.setRole(Role.ADMIN);
                 userRepository.save(user);
             } else {
-                throw new RuntimeException("User not found with id: " + id);
+                throw new EntityNotFoundException("User not found with id: " + id);
             }
         } else {
-            throw new RuntimeException("Only ADMIN can promote users to admin.");
+            throw new IllegalAccessException("Only ADMIN can promote users to admin.");
         }
     }
 
     @Transactional
-    public void demoteToUser(Long id) {
+    public void demoteToUser(Long id) throws IllegalAccessException {
         if (isAdmin()) {
             Optional<User> userOptional = userRepository.findById(id);
 
@@ -44,10 +45,10 @@ public class UserService {
                 user.setRole(Role.USER);
                 userRepository.save(user);
             } else {
-                throw new RuntimeException("User not found with id " + id);
+                throw new EntityNotFoundException("User not found with id " + id);
             }
         } else {
-            throw new RuntimeException("Only ADMIN can demote users to regular users.");
+            throw new IllegalAccessException("Only ADMIN can demote users to regular users.");
         }
     }
 

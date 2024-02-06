@@ -19,12 +19,21 @@ public class UserController {
     @PostMapping("/{userId}/promote")
     @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public void promote(@PathVariable Long userId){
-        userService.promoteToAdmin(userId);
+        try {
+            userService.promoteToAdmin(userId);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     @PostMapping("/{userId}/demote")
     public void demote(@PathVariable Long userId){
-        userService.demoteToUser(userId);
+
+        try{
+            userService.demoteToUser(userId);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

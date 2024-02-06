@@ -6,6 +6,7 @@ import com.example.vpab_reservation_system.model.Additional;
 import com.example.vpab_reservation_system.service.AdditionalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,4 +60,35 @@ public class AdditionalController {
         Additional createdAdditional = additionalService.saveAdditional(additional);
         return new ResponseEntity<>(createdAdditional, HttpStatus.CREATED);
     }
+
+    @PostMapping("/setAvailable/{id}")
+    public ResponseEntity<String> setToAvailable(@PathVariable Long id) {
+        try {
+            additionalService.setToAvailable(id);
+            return ResponseEntity.ok("Additional item with id " + id + " set to available successfully.");
+        } catch (IllegalAccessException | EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/setUnavailable/{id}")
+    public ResponseEntity<String> setToUnavailable(@PathVariable Long id) {
+        try {
+            additionalService.setToUnavailable(id);
+            return ResponseEntity.ok("Additional item with id " + id + " set to unavailable successfully.");
+        } catch (IllegalAccessException | EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/findAllAvailable")
+    public ResponseEntity<List<Additional>> findAllAvailableAdditinals() {
+        try {
+            List<Additional> availableAdditionals = additionalService.findAllAvailableAdditinals();
+            return ResponseEntity.ok(availableAdditionals);
+        } catch (IllegalAccessException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+    }
 }
+

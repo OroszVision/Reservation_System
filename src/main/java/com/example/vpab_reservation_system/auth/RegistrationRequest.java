@@ -1,4 +1,4 @@
-package com.example.vpab_reservation_system.Controller;
+package com.example.vpab_reservation_system.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class RegistrationRequest {
     private String username;
-    private String password;
+    String password;
 }

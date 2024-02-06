@@ -1,8 +1,8 @@
 package com.example.vpab_reservation_system.service;
 
-import com.example.vpab_reservation_system.Controller.AuthenticationRequest;
-import com.example.vpab_reservation_system.Controller.AuthenticationResponse;
-import com.example.vpab_reservation_system.Controller.RegistrationRequest;
+import com.example.vpab_reservation_system.auth.AuthenticationRequest;
+import com.example.vpab_reservation_system.auth.AuthenticationResponse;
+import com.example.vpab_reservation_system.auth.RegistrationRequest;
 import com.example.vpab_reservation_system.model.Role;
 import com.example.vpab_reservation_system.model.User;
 import com.example.vpab_reservation_system.repository.TokenRepository;

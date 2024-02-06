@@ -1,4 +1,4 @@
-package com.example.vpab_reservation_system.Controller;
+package com.example.vpab_reservation_system.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

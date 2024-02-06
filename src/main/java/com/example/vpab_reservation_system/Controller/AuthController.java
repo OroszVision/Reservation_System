@@ -1,5 +1,8 @@
 package com.example.vpab_reservation_system.Controller;
 
+import com.example.vpab_reservation_system.auth.AuthenticationRequest;
+import com.example.vpab_reservation_system.auth.AuthenticationResponse;
+import com.example.vpab_reservation_system.auth.RegistrationRequest;
 import com.example.vpab_reservation_system.config.LogoutService;
 import com.example.vpab_reservation_system.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -69,4 +72,6 @@ public class AuthController {
            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
        }
     }
+
+
 }

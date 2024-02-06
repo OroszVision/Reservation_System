@@ -21,6 +21,50 @@ import static com.example.vpab_reservation_system.util.SecurityUtil.isAdmin;
 public class AdditionalService {
     private final AdditionalRepository additionalRepository;
 
+
+    public void setToAvailable(Long id) throws IllegalAccessException {
+        if (isAdmin()) {
+            Optional<Additional> additionOptional = additionalRepository.findById(id);
+
+            if (additionOptional.isPresent()) {
+                Additional additional = additionOptional.get();
+                additional.setAvailable(true);
+                additionalRepository.save(additional);
+            } else {
+                throw new EntityNotFoundException("User not found with id " + id);
+            }
+        } else {
+            throw new IllegalAccessException("Only ADMIN can demote users to regular users.");
+        }
+    }
+
+    public void setToUnavailable(Long id) throws IllegalAccessException {
+        if (isAdmin()) {
+            Optional<Additional> additionOptional = additionalRepository.findById(id);
+
+            if (additionOptional.isPresent()) {
+                Additional additional = additionOptional.get();
+                additional.setAvailable(false);
+                additionalRepository.save(additional);
+            } else {
+                throw new EntityNotFoundException("User not found with id " + id);
+            }
+        } else {
+            throw new IllegalAccessException("Only ADMIN can demote users to regular users.");
+        }
+    }
+
+    public List<Additional> findAllAvailableAdditinals() throws IllegalAccessException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            return additionalRepository.findByAvailableTrue();
+        } else {
+            throw new IllegalAccessException("Not Authenticated User");
+        }
+    }
+
+
     public List<Additional> findAllAdditionals() throws IllegalAccessException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
