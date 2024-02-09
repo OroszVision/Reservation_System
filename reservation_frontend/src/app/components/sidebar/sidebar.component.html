@@ -1,0 +1,29 @@
+<script src="../../app.module.ts"></script>
+<div>
+  <button mat-button *ngIf="isUserAdmin()" (click)="navigateToAddAdditional()">
+    <mat-icon>add</mat-icon>
+    <span>New Additional</span>
+  </button>
+  <button mat-button *ngIf="isUserAdmin()" (click)="navigateToListAdditionals()">
+    <mat-icon>list</mat-icon>
+    <span>List Additionals</span>
+  </button>
+  <button mat-button  (click)="navigateToListReservations()">
+    <mat-icon>list</mat-icon>
+    <span>List Reservations</span>
+  </button>
+  <button mat-button (click)="navigateToAddReservation()">
+    <mat-icon>add</mat-icon>
+    <span>New Reservation</span>
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button color="primary" *ngIf="isUserAdmin()" (click)="promoteUser()">Promote User</button>
+  <br>
+  <button mat-raised-button color="warn" *ngIf="isUserAdmin()" (click)="demoteUser()">Demote User</button>
+
+
+
+
+
+</div>

@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/additional")
 public class AdditionalController {
     private final AdditionalService additionalService;
@@ -28,6 +29,18 @@ public class AdditionalController {
         List<Additional>additionals = additionalService.findAllAdditionals();
         return new ResponseEntity<>(additionals, HttpStatus.OK);
     }
+
+    @GetMapping("/{additionalId}")
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<Additional> getAdditionalById(@PathVariable Long additionalId){
+        Optional<Additional> existingAdditional = additionalService.findAdditionalById(additionalId);
+        if (existingAdditional.isPresent()) {
+            return new ResponseEntity<>(existingAdditional.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     @PutMapping("/{additionalId}")
     @Operation(security = @SecurityRequirement(name = "bearerAuth"))

@@ -1,0 +1,9 @@
+.additional-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.attribute {
+  flex: 1;
+  margin-right: 10px; /* Adjust the spacing between attributes as needed */
+}

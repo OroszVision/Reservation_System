@@ -1,0 +1,22 @@
+<div>
+  <h2>List of Additionals</h2>
+  <div *ngFor="let additional of additionals" class="additional-item">
+    <div class="attribute">
+      <p>{{ additional.name }}</p>
+    </div>
+    <div class="attribute">
+      <p>Price: {{ additional.price }}</p>
+    </div>
+    <div class="attribute">
+      <p>Available: {{ additional.available ? 'Yes' : 'No' }}</p>
+    </div>
+    <div class="attribute">
+      <button mat-button color="primary" (click)="editAdditional(additional)">Edit</button>
+
+    </div>
+    <div class="attribute">
+      <button mat-raised-button color="warn" (click)="onDelete(additional?.id || 0)">Delete</button>
+    </div>
+    <hr>
+  </div>
+</div>

@@ -23,8 +23,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.example.vpab_reservation_system.util.SecurityUtil.isAdmin;
-import static com.example.vpab_reservation_system.util.SecurityUtil.isOwner;
+import static com.example.vpab_reservation_system.util.SecurityUtil.*;
 
 @Service
 @RequiredArgsConstructor
@@ -118,13 +117,15 @@ public class ReservationService {
     public Reservation updateReservation(Long id, ReservationDTO updateReservation) throws IllegalAccessException {
         Reservation existingReservation = reservationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Reservation not found by id: " + id));
-
-        if (isAdmin() || isOwner(existingReservation)) {
             BeanUtils.copyProperties(updateReservation, existingReservation, "id", "reservation");
+            Set<Long> ids = updateReservation.getAdditionalIds();
+            Set<Additional> additionals = ids.stream()
+                    .map(additionalId -> additionalRepository.findById(additionalId)
+                            .orElseThrow(() -> new EntityNotFoundException("Additional not found by id:" + id)))
+                    .collect(Collectors.toSet());
+            existingReservation.setAdditionals(additionals);
             return reservationRepository.save(existingReservation);
-        } else {
-            throw new IllegalAccessException("Permission denied");
-        }
+
     }
 
     public void deleteReservation(Long id) {

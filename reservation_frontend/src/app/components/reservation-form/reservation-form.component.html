@@ -1,0 +1,22 @@
+<form class="example-form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepicker]="arrivalPicker" placeholder="Arrival Date" formControlName="arrival">
+    <mat-datepicker-toggle matSuffix [for]="arrivalPicker"></mat-datepicker-toggle>
+    <mat-datepicker #arrivalPicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepicker]="departurePicker" placeholder="Departure Date" formControlName="departure">
+    <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+    <mat-datepicker #departurePicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Additional Options</mat-label>
+    <mat-select formControlName="selectedAdditionals" multiple>
+      <mat-option *ngFor="let additional of additionals" [value]="additional.id">{{ additional.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="reservationForm.invalid">Submit</button>
+</form>

@@ -1,6 +1,5 @@
 package com.example.vpab_reservation_system.model;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -30,7 +28,6 @@ public class Reservation {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate arrival;
 
-
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate departure;
 
@@ -39,10 +36,11 @@ public class Reservation {
     @JsonIgnore
     private User user;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // Remove CascadeType.ALL
     @JoinTable(name = "reservation_additional",
             joinColumns = @JoinColumn(name = "reservation_id"),
             inverseJoinColumns = @JoinColumn(name = "additional_id"))
     private Set<Additional> additionals;
-    
+
+
 }

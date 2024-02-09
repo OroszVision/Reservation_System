@@ -18,6 +18,12 @@ public class SecurityUtil {
         return authentication != null && reservation != null && reservation.getUser().equals(authentication.getName());
     }
 
+    public static boolean isAuthenticated(){
+        Authentication authentication = getCurrentAuthentication();
+        return authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(authority -> authority.getAuthority().equals(Role.USER.name()));
+    }
+
     public static Authentication getCurrentAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }

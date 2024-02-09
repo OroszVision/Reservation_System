@@ -63,6 +63,7 @@ public class AuthService implements CommandLineRunner {
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
+                .role(user.getRole().toString())
                 .build();
     }
 

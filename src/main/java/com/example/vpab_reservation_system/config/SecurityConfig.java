@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**",
+            "api/v1/reservation/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
@@ -29,7 +30,7 @@ public class SecurityConfig {
             "/webjars/**",
             "/swagger-ui.html",
             "/swagger-ui/**"};
-    private static final String[] ADMIN_WHITE_LIST_URL = {"/api/v1/task/all", "/api/v1/user/**"};
+    private static final String[] ADMIN_WHITE_LIST_URL = {"/api/v1/user/**"};
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
