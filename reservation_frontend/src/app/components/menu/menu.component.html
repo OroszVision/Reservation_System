@@ -12,18 +12,16 @@
     <mat-icon>list</mat-icon>
     <span>List Reservations</span>
   </button>
+  <button mat-button *ngIf="isUserAdmin()" (click)="navigateToUsersReservationList()">
+    <mat-icon>list</mat-icon>
+    <span>List Reservations of User</span>
+  </button>
   <button mat-button (click)="navigateToAddReservation()">
     <mat-icon>add</mat-icon>
     <span>New Reservation</span>
   </button>
-  <br>
-  <br>
-  <button mat-raised-button color="primary" *ngIf="isUserAdmin()" (click)="promoteUser()">Promote User</button>
-  <br>
-  <button mat-raised-button color="warn" *ngIf="isUserAdmin()" (click)="demoteUser()">Demote User</button>
-
-
-
-
-
+  <button mat-button *ngIf="isUserAdmin()" (click)="navigateToHandleUserPermissions()">
+    <mat-icon>manage_accounts</mat-icon>
+    <span>Manage User Permissions</span>
+  </button>
 </div>

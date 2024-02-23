@@ -1,7 +1,7 @@
 <div>
   <h2>List of Additionals</h2>
   <div *ngFor="let additional of additionals" class="additional-item">
-    <div class="attribute">
+    <div class="attribute name">
       <p>{{ additional.name }}</p>
     </div>
     <div class="attribute">
@@ -12,10 +12,9 @@
     </div>
     <div class="attribute">
       <button mat-button color="primary" (click)="editAdditional(additional)">Edit</button>
-
     </div>
     <div class="attribute">
-      <button mat-raised-button color="warn" (click)="onDelete(additional?.id || 0)">Delete</button>
+      <button mat-raised-button class="delete-button" (click)="onDelete(additional?.id || 0)">Delete</button>
     </div>
     <hr>
   </div>

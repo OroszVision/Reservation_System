@@ -18,7 +18,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MenuComponent } from './components/menu/menu.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {ColorPickerModule} from "ngx-color-picker";
@@ -33,19 +33,24 @@ import { AdditionalEditComponent } from './components/additional-edit/additional
 import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { DatePipe } from '@angular/common';
+import { ReservationUsersListComponent } from './components/reservation-users-list/reservation-users-list.component';
+import { UserPermissionComponent } from './components/user-permission/user-permission.component';
+import {MatTabsModule} from "@angular/material/tabs";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainContentComponent,
     RegistrationComponent,
-    SidebarComponent,
+    MenuComponent,
     AdditionalFormComponent,
     ReservationFormComponent,
     AdditionalListComponent,
     AdditionalEditComponent,
     ReservationEditComponent,
     ReservationListComponent,
+    ReservationUsersListComponent,
+    UserPermissionComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ import { DatePipe } from '@angular/common';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatListModule
+    MatListModule,
+    MatTabsModule
   ],
   providers: [ DatePipe,],
   bootstrap: [AppComponent]

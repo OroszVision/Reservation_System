@@ -20,6 +20,11 @@ export class ReservationService {
     return this.http.get<Reservation[]>(`${this.baseUrl}/reservation/user`, { headers });
   }
 
+  public fetchAllReservations(): Observable<Reservation[]>{
+    const headers = this.getHeaders()
+    return this.http.get<Reservation[]>(`${this.baseUrl}/reservation/admin/all`, { headers })
+  }
+
   createReservation(reservation: ReservationDto): Observable<ReservationDto> {
     const headers = this.getHeaders();
     return this.http.post<ReservationDto>(`${this.baseUrl}/reservation/create`, reservation, { headers });

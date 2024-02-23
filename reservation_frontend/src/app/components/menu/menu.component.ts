@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from "../../services/auth-service/auth.service";
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class MenuComponent implements OnInit {
   showCompleted: boolean = false;
-  selectedCategoryId: number | null = null;
   userRole: string | null = null; // Definice proměnné pro uložení role uživatele
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(private router: Router) {}
     navigateToAddAdditional(){
     this.router.navigate(['/main/add-additional'])
   }
@@ -28,6 +26,12 @@ export class SidebarComponent implements OnInit {
   this.router.navigate(['/main/list-reservation'])
   }
 
+  navigateToUsersReservationList(){
+    this.router.navigate(['/main/users-list-reservation'])
+  }
+  navigateToHandleUserPermissions() {
+    this.router.navigate(['/main/user-permissions'])
+  }
   ngOnInit() {
     const storedValue = localStorage.getItem('showCompleted');
     if (storedValue !== null) {
@@ -39,17 +43,4 @@ export class SidebarComponent implements OnInit {
   isUserAdmin(): boolean {
     return this.userRole === 'ADMIN';
   }
-  onSlideToggleChange() {
-    localStorage.setItem('showCompleted', JSON.stringify(this.showCompleted));
-  }
-
-  promoteUser() {
-
-  }
-
-  demoteUser() {
-
-  }
-
-
 }

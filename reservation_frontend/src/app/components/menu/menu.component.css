@@ -1,0 +1,16 @@
+
+button {
+  padding: 10px 10px; /* Adjust padding as needed */
+  color: #454B5F; /* Button text color */
+  border-radius: 20px; /* Adjust border-radius to control the roundness */
+  cursor: pointer;
+  margin: 5px;
+  border: #454B5F solid 2px; /* Initial border color */
+  background-color: transparent; /* Initial background color */
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease; /* Smooth transition effect */
+}
+
+button:hover {
+  background-color: #454B5F; /* Background color changes on hover */
+  color: #fff; /* Text color changes on hover */
+}

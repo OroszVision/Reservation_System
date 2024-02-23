@@ -10,6 +10,8 @@ import {AdditionalListComponent} from "./components/additional-list/additional-l
 import {AdditionalEditComponent} from "./components/additional-edit/additional-edit.component";
 import {ReservationEditComponent} from "./components/reservation-edit/reservation-edit.component";
 import {ReservationListComponent} from "./components/reservation-list/reservation-list.component";
+import {ReservationUsersListComponent} from "./components/reservation-users-list/reservation-users-list.component";
+import {UserPermissionComponent} from "./components/user-permission/user-permission.component";
 
 const mainRoutes: Routes = [
   { path: 'add-additional', component: AdditionalFormComponent},
@@ -17,7 +19,9 @@ const mainRoutes: Routes = [
   { path: 'list-additionals', component: AdditionalListComponent},
   { path: 'add-reservation', component: ReservationFormComponent},
   { path: 'list-reservation', component: ReservationListComponent},
+  { path: 'users-list-reservation', component: ReservationUsersListComponent},
   { path: 'edit-reservation/:id', component: ReservationEditComponent},
+  { path: 'user-permissions', component: UserPermissionComponent},
 
 ];
 

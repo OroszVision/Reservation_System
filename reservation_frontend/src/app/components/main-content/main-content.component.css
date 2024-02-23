@@ -1,27 +1,63 @@
+.top-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  height: 9vh;
+
+}
+
+.left-half,
+.right-half {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -10%;
+  width: 35%;
+
+}
+
+
+.left-half {
+  background-color: #454B5F; /* Left half background color */
+  border-right-style: solid;
+  border-right-width: revert;
+  border-right-color: #67708E;
+  border-top: #67708E solid 5px;
+  transform: skewX(-45deg); /* Tilt the border */
+  z-index: 1;
+}
+
+.left-half::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 95%;
+  width: 5%; /* Adjust width of the border */
+  height: 100%;
+  background-color: #67708E; /* Color of the border */
+}
+
+.app-logo-button
+{
+  position: relative;
+  left: 1%;
+  font-size: xx-large;
+  font-style: oblique;
+  font-family: "Yu Gothic UI", serif;
+  color: white;
+}
+
 .example-spacer {
-  flex: 1 1 auto;
+  flex: 1;
 }
 
-.example-container {
-  width: 100%;
-  min-height: 100vh;
-  display: block;
-}
-
-.sidebar{
-  width: 30vh;
-  min-width: 25vh;
-  height: 100%;
-  padding: 10px;
-  background: aliceblue;
-}
-
-.app-logo-button{
-  font-size: larger;
-}
-
-.main-content{
-  height: 100%;
+.main-content {
   padding: 40px;
+  background-color: #F3F3EF;
 }
 
+.menu-icon{
+  background-color: #454B5F;
+  margin-left: 10px;
+}

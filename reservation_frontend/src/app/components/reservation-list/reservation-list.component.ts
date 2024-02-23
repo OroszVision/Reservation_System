@@ -26,6 +26,7 @@ export class ReservationListComponent implements OnInit{
   loadReservations(): void {
     this.reservationService.fetchReservations().subscribe(reservations => {
       this.reservations = reservations;
+      console.log(reservations);
     });
   }
 
