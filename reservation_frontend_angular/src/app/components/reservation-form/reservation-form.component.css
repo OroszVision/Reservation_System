@@ -1,0 +1,30 @@
+.space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.form-container {
+  max-width: 600px; /* Increase the max-width for a larger form */
+  margin: auto;
+  padding: 40px; /* Increase the padding for a bigger form */
+  border: 2px solid #67708E;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style inputs to have the same size */
+input, mat-form-field {
+  width: 100%;
+  margin-bottom: 10px; /* Add some space between inputs */
+}
+
+button {
+  width: 100%; /* Make the button take up full width */
+  margin-top: 10px; /* Add some space between the last input and the button */
+}

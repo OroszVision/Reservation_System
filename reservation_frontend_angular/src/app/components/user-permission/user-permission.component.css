@@ -1,0 +1,42 @@
+/* user-permission.component.css */
+
+/* Style for the container */
+.user-container {
+  padding: 20px;
+}
+
+/* Style for the tab group */
+.mat-tab-group {
+  max-width: 500px; /* Adjust the max-width as needed */
+  margin: auto; /* Center the tab group */
+}
+
+/* Style for the selection list */
+.mat-selection-list {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: 300px; /* Adjust the max-height as needed */
+}
+
+/* Style for list options */
+.mat-list-option {
+  cursor: pointer;
+}
+
+/* Style for the buttons */
+button {
+  margin-top: 10px;
+}
+
+/* Style for the Promote button */
+.promote-button {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+/* Style for the Demote button */
+.demote-button {
+  background-color: #f44336; /* Red */
+  color: white;
+}
