@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthResponse, AuthService, RegistrationRequest} from "../../services/auth-service/auth.service";
 import {Router} from "@angular/router";
-import {NotificationService, NotificationType} from "../../services/notification-service/notification.service";
+import {NotificationService, } from "../../services/notification-service/notification.service";
 
 @Component({
   selector: 'app-registration',
@@ -23,14 +23,15 @@ export class RegistrationComponent {
     this.authService.registerUser(request).subscribe({
       next: (response) => {
         this.authenticated(response);
-        this.notificationsService.showNotification('Registration successful!', NotificationType.Success);
+        this.notificationsService.showNotification('Registration successful!');
       },
       error: (error) => {
         console.error('Registration failed', error);
-        this.notificationsService.showNotification('Registration failed. Please try again.', NotificationType.Error);
+        this.notificationsService.showNotification('Registration failed. Please try again.');
       }
     });
   }
+
 
   authenticated(response: AuthResponse) {
     localStorage.setItem('access_token', response.access_token);
