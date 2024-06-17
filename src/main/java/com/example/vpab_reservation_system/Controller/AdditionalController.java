@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200, http://localhost:3000")
 @RequestMapping("/api/v1/additional")
 public class AdditionalController {
     private final AdditionalService additionalService;
@@ -102,6 +102,27 @@ public class AdditionalController {
         } catch (IllegalAccessException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
+    }
+
+    @GetMapping("/sortedByName")
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<List<Additional>> getAllAdditionalsSortedByName() {
+        List<Additional> sortedAdditionals = additionalService.findAllAdditionalsSortedByName();
+        return new ResponseEntity<>(sortedAdditionals, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortedByPrice")
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<List<Additional>> getAllAdditionalsSortedByPrice() {
+        List<Additional> sortedAdditionals = additionalService.findAllAdditionalsSortedByPrice();
+        return new ResponseEntity<>(sortedAdditionals, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortedByAvailability")
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<List<Additional>> getAllAvailableAdditionalsSortedByAvailability() {
+        List<Additional> sortedAdditionals = additionalService.findAllAdditionalsSortedByAvailability();
+        return new ResponseEntity<>(sortedAdditionals, HttpStatus.OK);
     }
 }
 

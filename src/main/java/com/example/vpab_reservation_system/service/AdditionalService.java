@@ -7,6 +7,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -112,6 +113,17 @@ public class AdditionalService {
         }
     }
 
+    public List<Additional> findAllAdditionalsSortedByName() {
+        return additionalRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+    }
+
+    public List<Additional> findAllAdditionalsSortedByPrice() {
+        return additionalRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
+    }
+
+    public List<Additional> findAllAdditionalsSortedByAvailability() {
+        return additionalRepository.findByAvailableTrue();
+    }
 
 
 }
