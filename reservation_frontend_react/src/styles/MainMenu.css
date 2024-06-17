@@ -1,0 +1,45 @@
+.main-menu {
+    background-color: transparent; 
+    padding: 10px 20px; /* Padding around the menu */
+    margin: 20px;;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .main-menu ul {
+    list-style-type: none; /* Remove default list styling */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display menu items horizontally */
+  }
+  
+  .main-menu ul li {
+    margin-right: 20px; /* Spacing between menu items */
+  }
+  
+  .main-menu ul li:last-child {
+    margin-right: 0; /* Remove margin from the last menu item */
+  }
+  
+  .menu-link {
+    text-decoration: none; /* Remove underline from links */
+    color: #ffffff; /* White link text color */
+    font-weight: bold; /* Bold text for links */
+    transition: color 0.3s ease; /* Smooth transition for link color change */
+    white-space: nowrap;
+  }
+  
+  .menu-link:hover {
+    color: #f0f0f0; /* Lighter grey color on hover */
+  }
+  
+  @media (max-width: 768px) {
+    .main-menu ul {
+      flex-direction: column; /* Stack menu items vertically on smaller screens */
+    }
+    
+    .main-menu ul li {
+      margin-right: 0; /* Remove margin between stacked menu items */
+      margin-bottom: 10px; /* Add vertical spacing between stacked menu items */
+    }
+  }
+  

@@ -1,0 +1,125 @@
+/* App.css */
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: #3F826D;
+  color: white;
+  padding: 10px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.left-section, .menu-section, .right-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.auth-links {
+  display: flex;
+}
+
+.auth-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.logout-button {
+  background-color: #FF5555;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ReservationList component styles */
+.reservation-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.reservation-card {
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.reservation-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3F826D;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #FF5555;
+  color: white;
+}
+
+.btn-primary:hover, .btn-danger:hover {
+  background-color: #2D6653;
+}
+
+@media (max-width: 768px) {
+  .reservation-card {
+    width: 100%;
+  }
+}
