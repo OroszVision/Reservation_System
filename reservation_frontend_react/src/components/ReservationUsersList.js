@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/ReservationUserList.css';  // Import the CSS file
 
 const ReservationUsersList = () => {
   const [users, setUsers] = useState([]);
@@ -42,10 +43,10 @@ const ReservationUsersList = () => {
         });
         console.log('Fetched reservations:', response.data);
         setSelectedUserDetails(response.data);
-        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching user reservations:', error);
         setError('Error fetching user reservations. Please try again later.');
+      } finally {
         setIsLoading(false);
       }
     }
@@ -80,27 +81,38 @@ const ReservationUsersList = () => {
       {selectedUserDetails && selectedUserDetails.length > 0 ? (
         <div>
           <h3>{selectedUsername}'s Reservations</h3>
-          <div className="reservation-cards">
-            {selectedUserDetails.map((reservation) => (
-              <div key={reservation.id} className="reservation-card">
-                <h3>{reservation.name}</h3>
-                <p>Arrival: {reservation.arrival}</p>
-                <p>Departure: {reservation.departure}</p>
-                {reservation.additionals && reservation.additionals.length > 0 && (
-                  <div>
-                    <p>Additional Details:</p>
-                    <ul>
-                      {reservation.additionals.map((additional) => (
-                        <li key={additional.id}>
-                          {additional.name} - Price: {additional.price}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <table className="styled-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Additional Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {selectedUserDetails.map((reservation) => (
+                <tr key={reservation.id}>
+                  <td>{reservation.name}</td>
+                  <td>{reservation.arrival}</td>
+                  <td>{reservation.departure}</td>
+                  <td>
+                    {reservation.additionals && reservation.additionals.length > 0 ? (
+                      <ul>
+                        {reservation.additionals.map((additional) => (
+                          <li key={additional.id}>
+                            {additional.name} - Price: {additional.price}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span>No additional details</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <p>No reservations found for this user.</p>

@@ -36,6 +36,7 @@ import { DatePipe } from '@angular/common';
 import { ReservationUsersListComponent } from './components/reservation-users-list/reservation-users-list.component';
 import { UserPermissionComponent } from './components/user-permission/user-permission.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatTableModule} from "@angular/material/table";
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,31 +53,32 @@ import {MatTabsModule} from "@angular/material/tabs";
     ReservationUsersListComponent,
     UserPermissionComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatCheckboxModule,
-    HttpClientModule,
-    FormsModule,
-    MatInputModule,
-    AppRoutingModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatTooltipModule,
-    ReactiveFormsModule,
-    MatSlideToggleModule,
-    ColorPickerModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatListModule,
-    MatTabsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatCheckboxModule,
+        HttpClientModule,
+        FormsModule,
+        MatInputModule,
+        AppRoutingModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatTooltipModule,
+        ReactiveFormsModule,
+        MatSlideToggleModule,
+        ColorPickerModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatListModule,
+        MatTabsModule,
+        MatTableModule
+    ],
   providers: [ DatePipe,],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@ export class ReservationUsersListComponent {
   users: User[] = [];
   selectedUserId: number | undefined;
   selectedUserDetails: UserDetails | undefined;
+  displayedColumns: string[] = ['name', 'arrival', 'departure', 'additionals'];
 
   constructor(private userService: UserService) {}
 
@@ -22,11 +23,10 @@ export class ReservationUsersListComponent {
   }
 
   onUserSelectionChange() {
-    if (this.selectedUserId) {
+    if (this.selectedUserId !== undefined) {
       this.userService.getUserDetails(this.selectedUserId).subscribe(userDetails => {
         this.selectedUserDetails = userDetails;
       });
     }
   }
 }
-
